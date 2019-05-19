@@ -48,7 +48,7 @@ class CatVideoButton extends React.Component {
 			<View>
 				<TouchableHighlight
 					onPress={() => {
-						console.log('pressed the cat');
+						this.playAsync();
 					}}
 				>
 					<View>
@@ -65,7 +65,7 @@ class CatVideoButton extends React.Component {
 							ref={c => {
 								this._video = c;
 							}}
-							onPlayBackStatusUpdate={status => {
+							onPlaybackStatusUpdate={status => {
 								if (status.didJustFinish) {
 									this.resetAsync();
 								}
