@@ -28,8 +28,27 @@ export default class App extends React.Component {
 		});
 	};
 
+	_loadAssetsAsync = async () => {
+		await Expo.Asset.loadAsync([
+			require('./assets/1.mp4'),
+			require('./assets/1.mp4'),
+			require('./assets/2.mp4'),
+			require('./assets/3.mp4'),
+			require('./assets/4.mp4'),
+			require('./assets/5.mp4'),
+			require('./assets/6.mp4'),
+			require('./assets/7.mp4'),
+			require('./assets/8.mp4'),
+			require('./assets/9.mp4')
+		]);
+	};
+
 	_setupAsync = async () => {
-		await Promise.all([this._setAudioModeAsync(), this._loadFontsAsync()]);
+		await Promise.all([
+			this._loadAssetsAsync(),
+			this._setAudioModeAsync(),
+			this._loadFontsAsync()
+		]);
 		this.setState({ isReady: true });
 	};
 
@@ -48,7 +67,8 @@ export default class App extends React.Component {
 				<Text
 					style={{
 						color: yellow,
-						fontSize: 42
+						fontSize: 42,
+						fontFamily: 'CooperBlackRegular'
 					}}
 				>
 					Cat Sounds
