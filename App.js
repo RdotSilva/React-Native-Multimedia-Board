@@ -33,6 +33,11 @@ export default class App extends React.Component {
 }
 
 class CatVideoButton extends React.Component {
+	resetAsync = async () => {
+		await this._video.stopAsync();
+		await this._video.setPositionAsync(0);
+	};
+
 	render() {
 		return (
 			<Expo.Video
@@ -45,6 +50,11 @@ class CatVideoButton extends React.Component {
 				shouldPlay={true}
 				ref={c => {
 					this._video = c;
+				}}
+				onPlayBackStatusUpdate={status => {
+					if (status.didJustFinish) {
+						this.resetAsync();
+					}
 				}}
 			/>
 		);
