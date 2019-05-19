@@ -28,6 +28,7 @@ export default class App extends React.Component {
 						width: 400,
 						height: 400
 					}}
+					resizeMode="cover"
 					shouldPlay={true}
 				/>
 			</View>
