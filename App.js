@@ -1,6 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 
+let green = '#477009';
+let yellow = '#fcd602';
+
 export default class App extends React.Component {
 	_setAudioModeAsync = async () => {
 		await Expo.Audio.setAudioModeAsync({
@@ -15,6 +18,12 @@ export default class App extends React.Component {
 		});
 	};
 
+	_loadFontsAsync = async () => {
+		await Expo.Font.loadAsync({
+			CopperBlackRegular: require('./assets/CopperBlackRegular.ttf')
+		});
+	};
+
 	componentWillMount() {
 		this._setAudioModeAsync();
 	}
@@ -23,7 +32,14 @@ export default class App extends React.Component {
 		let size = 100;
 		return (
 			<View style={styles.container}>
-				<Text>Cat Sounds</Text>
+				<Text
+					style={{
+						color: yellow,
+						fontSize: 42
+					}}
+				>
+					Cat Sounds
+				</Text>
 				<CatVideoButton
 					source={require('./assets/1.mp4')}
 					size={size}
@@ -81,7 +97,7 @@ class CatVideoButton extends React.Component {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#fff',
+		backgroundColor: 'green',
 		alignItems: 'center',
 		justifyContent: 'center'
 	}
