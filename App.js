@@ -2,6 +2,12 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default class App extends React.Component {
+	_setAudioModeAsync = async () => {
+		await Expo.Audio.setAudioModeAsync({
+			playInSilentModeIOS: true
+		});
+	};
+
 	render() {
 		return (
 			<View style={styles.container}>
@@ -12,6 +18,7 @@ export default class App extends React.Component {
 						width: 400,
 						height: 400
 					}}
+					shouldPlay={true}
 				/>
 			</View>
 		);
