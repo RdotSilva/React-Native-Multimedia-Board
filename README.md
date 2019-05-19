@@ -1,6 +1,6 @@
 #React Native Multimedia Board
 
-Multimedia Board that displays different types of media depending on user selection.
+Multimedia Board that plays videos based on user selection.
 
 ## Built With
 
