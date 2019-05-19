@@ -1,11 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 
 export default class App extends React.Component {
 	_setAudioModeAsync = async () => {
 		await Expo.Audio.setAudioModeAsync({
-			playInSilentModeIOS: true,
+			playsInSilentModeIOS: true,
 			allowsRecordingIOS: false,
+			playThroughEarpieceAndroid: false,
 			shouldDuckAndroid: true,
 			interruptionModeAndroid:
 				Expo.Audio.INTERRUPTION_MODE_ANDROID_DUCK_OTHERS,
@@ -40,23 +41,35 @@ class CatVideoButton extends React.Component {
 
 	render() {
 		return (
-			<Expo.Video
-				source={this.props.source}
-				style={{
-					width: this.props.width || this.props.size || 400,
-					height: this.props.height || this.props.size || 400
-				}}
-				resizeMode="cover"
-				shouldPlay={true}
-				ref={c => {
-					this._video = c;
-				}}
-				onPlayBackStatusUpdate={status => {
-					if (status.didJustFinish) {
-						this.resetAsync();
-					}
-				}}
-			/>
+			<View>
+				<TouchableHighlight
+					onPress={() => {
+						console.log('pressed the cat');
+					}}
+				>
+					<View>
+						<Expo.Video
+							source={this.props.source}
+							style={{
+								width:
+									this.props.width || this.props.size || 400,
+								height:
+									this.props.height || this.props.size || 400
+							}}
+							resizeMode="cover"
+							shouldPlay={true}
+							ref={c => {
+								this._video = c;
+							}}
+							onPlayBackStatusUpdate={status => {
+								if (status.didJustFinish) {
+									this.resetAsync();
+								}
+							}}
+						/>
+					</View>
+				</TouchableHighlight>
+			</View>
 		);
 	}
 }
