@@ -73,10 +73,60 @@ export default class App extends React.Component {
 				>
 					Cat Sounds
 				</Text>
-				<CatVideoButton
-					source={require('./assets/1.mp4')}
-					size={size}
-				/>
+				<View
+					style={{
+						flexDirection: 'row'
+					}}
+				>
+					<CatVideoButton
+						source={require('./assets/1.mp4')}
+						size={size}
+					/>
+					<CatVideoButton
+						source={require('./assets/2.mp4')}
+						size={size}
+					/>
+					<CatVideoButton
+						source={require('./assets/3.mp4')}
+						size={size}
+					/>
+				</View>
+				<View
+					style={{
+						flexDirection: 'row'
+					}}
+				>
+					<CatVideoButton
+						source={require('./assets/4.mp4')}
+						size={size}
+					/>
+					<CatVideoButton
+						source={require('./assets/5.mp4')}
+						size={size}
+					/>
+					<CatVideoButton
+						source={require('./assets/6.mp4')}
+						size={size}
+					/>
+				</View>
+				<View
+					style={{
+						flexDirection: 'row'
+					}}
+				>
+					<CatVideoButton
+						source={require('./assets/7.mp4')}
+						size={size}
+					/>
+					<CatVideoButton
+						source={require('./assets/8.mp4')}
+						size={size}
+					/>
+					<CatVideoButton
+						source={require('./assets/9.mp4')}
+						size={size}
+					/>
+				</View>
 			</View>
 		);
 	}
@@ -94,7 +144,11 @@ class CatVideoButton extends React.Component {
 
 	render() {
 		return (
-			<View>
+			<View
+				style={{
+					margin: 10
+				}}
+			>
 				<TouchableHighlight
 					onPress={() => {
 						this.playAsync();
