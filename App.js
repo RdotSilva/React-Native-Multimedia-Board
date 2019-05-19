@@ -39,6 +39,10 @@ class CatVideoButton extends React.Component {
 		await this._video.setPositionAsync(0);
 	};
 
+	playAsync = async () => {
+		await this._video.replayAsync();
+	};
+
 	render() {
 		return (
 			<View>
