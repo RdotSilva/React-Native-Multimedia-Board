@@ -5,6 +5,10 @@ let green = '#477009';
 let yellow = '#fcd602';
 
 export default class App extends React.Component {
+	state = {
+		isReady: false
+	};
+
 	_setAudioModeAsync = async () => {
 		await Expo.Audio.setAudioModeAsync({
 			playsInSilentModeIOS: true,
@@ -20,15 +24,24 @@ export default class App extends React.Component {
 
 	_loadFontsAsync = async () => {
 		await Expo.Font.loadAsync({
-			CopperBlackRegular: require('./assets/CopperBlackRegular.ttf')
+			CooperBlackRegular: require('./assets/CooperBlackRegular.ttf')
 		});
 	};
 
+	_setupAsync = async () => {
+		await Promise.all([this._setAudioModeAsync(), this._loadFontsAsync()]);
+		this.setState({ isReady: true });
+	};
+
 	componentWillMount() {
-		this._setAudioModeAsync();
+		this._setupAsync();
 	}
 
 	render() {
+		if (!this.state.isReady) {
+			return <Expo.AppLoading />;
+		}
+
 		let size = 100;
 		return (
 			<View style={styles.container}>
