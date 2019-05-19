@@ -43,6 +43,9 @@ class CatVideoButton extends React.Component {
 				}}
 				resizeMode="cover"
 				shouldPlay={true}
+				ref={c => {
+					this._video = c;
+				}}
 			/>
 		);
 	}
