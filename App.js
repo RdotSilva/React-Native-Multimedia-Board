@@ -22,16 +22,23 @@ export default class App extends React.Component {
 		return (
 			<View style={styles.container}>
 				<Text>Cat Sounds</Text>
-				<Expo.Video
-					source={require('./assets/1.mp4')}
-					style={{
-						width: 400,
-						height: 400
-					}}
-					resizeMode="cover"
-					shouldPlay={true}
-				/>
 			</View>
+		);
+	}
+}
+
+class CatVideoButton extends React.Component {
+	render() {
+		return (
+			<Expo.Video
+				source={this.props.source}
+				style={{
+					width: this.props.width || this.props.size || 400,
+					height: this.props.height || this.props.size || 400
+				}}
+				resizeMode="cover"
+				shouldPlay={true}
+			/>
 		);
 	}
 }
