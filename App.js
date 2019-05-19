@@ -19,9 +19,14 @@ export default class App extends React.Component {
 	}
 
 	render() {
+		let size = 100;
 		return (
 			<View style={styles.container}>
 				<Text>Cat Sounds</Text>
+				<CatVideoButton
+					source={require('./assets/1.mp4')}
+					size={size}
+				/>
 			</View>
 		);
 	}
