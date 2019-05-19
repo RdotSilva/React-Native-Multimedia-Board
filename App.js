@@ -8,6 +8,10 @@ export default class App extends React.Component {
 		});
 	};
 
+	componentWillMount() {
+		this._setAudioModeAsync();
+	}
+
 	render() {
 		return (
 			<View style={styles.container}>
