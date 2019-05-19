@@ -4,7 +4,13 @@ import { StyleSheet, Text, View } from 'react-native';
 export default class App extends React.Component {
 	_setAudioModeAsync = async () => {
 		await Expo.Audio.setAudioModeAsync({
-			playInSilentModeIOS: true
+			playInSilentModeIOS: true,
+			allowsRecordingIOS: false,
+			shouldDuckAndroid: true,
+			interruptionModeAndroid:
+				Expo.Audio.INTERRUPTION_MODE_ANDROID_DUCK_OTHERS,
+			interruptionModeIOS:
+				Expo.Audio.INTERRUPTION_MODE_IOS_MIX_WITH_OTHERS
 		});
 	};
 
